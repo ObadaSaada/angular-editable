@@ -1,0 +1,16 @@
+
+    <ng-select
+    class="custom-editable"
+    [searchable] = "false"
+    [clearable] = "false"
+    [(ngModel)]="selectedItem"
+    [placeholder]="title"
+    (change)="changeEventEmitter()"
+    (click)="reset()"
+    >
+      <ng-option *ngFor="let item of items" [value]="item.tag">
+        <div [style.font-family]="item.tag" [style.font-size.pt]="14">
+          {{item.name}}
+        </div>
+      </ng-option>
+    </ng-select>

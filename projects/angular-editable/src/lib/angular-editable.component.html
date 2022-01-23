@@ -1,0 +1,188 @@
+<div class="editor-container">
+  <div class="editor-toolbar">
+    <nav>
+      <div class="item">
+        <button (click)="execute('textFormat','undo')">
+          <fa-icon icon="reply"></fa-icon>
+        </button>
+      </div>
+      <div class="item">
+        <button (click)="execute('textFormat','redo')">
+          <fa-icon icon="reply" flip="horizontal"></fa-icon>
+        </button>
+      </div>
+    <div class="item">|</div>
+      <div class="item">
+        <button (click)="execute('textFormat','bold')">
+          <fa-icon icon="bold"></fa-icon>
+        </button>
+      </div>
+      <div class="item">
+        <button (click)="execute('textFormat','underline')">
+          <fa-icon icon="underline"></fa-icon>
+        </button>
+      </div>
+      <div class="item">
+        <button (click)="execute('textFormat','italic')">
+          <fa-icon icon="italic"></fa-icon>
+        </button>
+      </div>
+      <div class="item">
+        <button (click)="execute('textFormat','strikethrough')">
+          <fa-icon icon="strikethrough"></fa-icon>
+        </button>
+      </div>
+      <div class="item">|</div>
+      <div class="item">
+        <button (click)="execute('justifyLeft','justifyLeft')">
+          <fa-icon icon="align-left"></fa-icon>
+        </button>
+      </div>
+      <div class="item">
+        <button (click)="execute('justifyCenter','justifyCenter')">
+          <fa-icon icon="align-center"></fa-icon>
+        </button>
+      </div>
+      <div class="item">
+        <button (click)="execute('justifyRight','justifyRight')">
+          <fa-icon icon="align-right"></fa-icon>
+        </button>
+      </div>
+     <div class="item">|</div>
+     <div class="item">
+      <button (click)="execute('insertorderedlist','insertorderedlist')">
+        <fa-icon icon="list-ol"></fa-icon>
+      </button>
+    </div>
+    <div class="item">
+      <button (click)="execute('insertunorderedlist','insertunorderedlist')">
+        <fa-icon icon="list-ul"></fa-icon>
+      </button>
+    </div>
+    <div class="item">|</div>
+    <div class="item">
+      <button (click)="execute('insertHorizontalRule','insertHorizontalRule')">
+        <fa-icon icon="minus"></fa-icon>
+      </button>
+    </div>
+    <div class="item">
+      <button (click)="execute('direction','ltr')">
+        <fa-icon icon="paragraph" flip="horizontal"></fa-icon>
+      </button>
+    </div>
+    <div class="item">
+      <button (click)="execute('direction','rtl')">
+        <fa-icon icon="paragraph"></fa-icon>
+      </button>
+    </div>
+    <div class="item">|</div>
+    <div class="item">
+      <button (click)="openURLModal('createLinkModal')">
+        <fa-icon icon="link"></fa-icon>
+      </button>
+    </div>
+    <div class="item">
+      <button (click)="execute('unlink','unlink')">
+        <fa-icon icon="unlink"></fa-icon>
+      </button>
+    </div>
+    <div class="item">|</div>
+    <div class="item">
+      <button (click)="openFileDialog()">
+      <input style="display: none;" type="file" #SelectedImage (change)="handleFileDialogChange($event)"  accept="image/*">
+        <fa-icon icon="image"></fa-icon>
+      </button>
+    </div>
+    </nav>
+  </div>
+  <div class="editor-toolbar">
+    <nav>
+      <div class="item">
+        <headings-editable-select #headings
+        [items]="config.headings"
+        [title]="'Headings'"
+        (changeHeadings)="execute('headings',headingsComp.selectedItem)">
+        </headings-editable-select>
+      </div>
+      <div class="item">
+        <font-size-editable-select #fontSize
+        [items]="config.fontSizes"
+        [title]="'Font Size'"
+        (changefontSize)="execute('fontSize',fontSizesComp.selectedItem)">
+        </font-size-editable-select>
+      </div>
+      <div class="item">
+        <font-family-editable-select style="width: 200px;" #fontFamily
+        [items]="config.fontFamilies"
+        [title]="'Font Family'"
+        (changeFontFamily)="execute('fontFamily',fontFamiliesComp.selectedItem)">
+        </font-family-editable-select>
+      </div>
+      <div class="item">
+        <colors-editable-select #foreColor
+        [items]="config.headings"
+        [title]="'Font Color'"
+        (changeColors)="execute('foreColor',foreColorComp.selectedItem)">
+        </colors-editable-select>
+      </div>
+      <div class="item">
+        <colors-editable-select #backColor
+        [items]="config.headings"
+        [title]="'Background Color'"
+        (changeColors)="execute('hiliteColor',backColorComp.selectedItem)">
+        </colors-editable-select>
+      </div>
+    </nav>
+  </div>
+  <div class="editor-content">
+    <div
+    #editor
+    contenteditable
+    (input)="editorChanged($event.target)"
+    (focus)="editorFocused($event)"
+    (blur)="editorBlured($event)"
+    (mouseout)="editorMouseOut()"
+    (mouseup)="editorMouseUp()"
+    (mousedown)="editorMouseDown()"
+    (keyup)="editorKeyUp()"
+    (click)="clickEvent()"
+    (paste)="onPaste($event)"
+    >
+      <div>
+          <p>This is some regular content.</p>
+          <p>This text is fully editable.</p>
+          <div class="quote" style="background-color: #EFFEFE;">
+              <p>This is some quoted content.</p>
+              <p>You can only change the format of this text.</p>
+          </div>
+          <p>This is some more regular content.</p>
+          <p>This text is also fully editable.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<editable-modal #createLinkModal id="createLinkModal">
+
+  <fieldset>
+  <div class="invalid-input" *ngIf="!validURL">
+    Invalid URL
+  </div>
+  <legend>URL</legend>
+    <input #UrlInput type="url" name="url" (input)="inputChange(UrlInput)" />
+    <button (click)="submitURLModal('createLinkModal', UrlInput);">Save</button>
+    <button (click)="closeModel('createLinkModal', [UrlInput])">Close</button>
+  </fieldset>
+</editable-modal>
+<editable-modal #changeImageSize id="changeImageSize">
+  <fieldset>
+  <legend>Width</legend>
+    <input #ImageWidth type="number" name="w" /><span>px</span>
+  </fieldset>
+  <fieldset>
+  <legend>Height</legend>
+    <input #Imageheight type="number" name="h" /><span>px</span>
+  </fieldset>
+    <button (click)="submitSizeModal('changeImageSize', ImageWidth, Imageheight);">Save</button>
+    <button (click)="resetSizeModal('changeImageSize');">Reset</button>
+    <button (click)="closeModel('changeImageSize', [ImageWidth,Imageheight])">Close</button>
+</editable-modal>

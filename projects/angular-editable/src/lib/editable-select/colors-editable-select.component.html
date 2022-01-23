@@ -1,0 +1,38 @@
+
+  <ng-select
+  class="color-editable"
+  [searchable] = "false"
+  [clearable] = "false"
+  [(ngModel)]="selectedItem"
+  [placeholder]="title"
+  (change)="changeEventEmitter()"
+  (click)="reset()"
+  >
+        <ng-option [value]="'#BFEDD2'"><div title="Light Green"  style="background-color: rgb(191, 237, 210);"></div></ng-option>
+        <ng-option [value]="'#FBEEB8'"><div title="Light Yellow"  style="background-color: rgb(251, 238, 184);"></div></ng-option>
+        <ng-option [value]="'#F8CAC6'"><div title="Light Red"  style="background-color: rgb(248, 202, 198);"></div></ng-option>
+        <ng-option [value]="'#ECCAFA'"><div title="Light Purple"  style="background-color: rgb(236, 202, 250);"></div></ng-option>
+        <ng-option [value]="'#C2E0F4'"><div title="Light Blue"  style="background-color: rgb(194, 224, 244);"></div></ng-option>
+
+        <ng-option [value]="'#2DC26B'"><div title="Green"  style="background-color: rgb(45, 194, 107);"></div></ng-option>
+        <ng-option [value]="'#F1C40F'"><div title="Yellow"  style="background-color: rgb(241, 196, 15);"></div></ng-option>
+        <ng-option [value]="'#E03E2D'"><div title="Red"  style="background-color: rgb(224, 62, 45);"></div></ng-option>
+        <ng-option [value]="'#B96AD9'"><div title="Purple"  style="background-color: rgb(185, 106, 217);"></div></ng-option>
+        <ng-option [value]="'#3598DB'"><div title="Blue"  style="background-color: rgb(53, 152, 219);"></div></ng-option>
+
+        <ng-option [value]="'#169179'"><div title="Dark Turquoise"  style="background-color: rgb(22, 145, 121);"></div></ng-option>
+        <ng-option [value]="'#E67E23'"><div title="Orange"  style="background-color: rgb(230, 126, 35);"></div></ng-option>
+        <ng-option [value]="'#BA372A'"><div title="Dark Red"  style="background-color: rgb(186, 55, 42);"></div></ng-option>
+        <ng-option [value]="'#843FA1'"><div title="Dark Purple"  style="background-color: rgb(132, 63, 161);"></div></ng-option>
+        <ng-option [value]="'#236FA1'"><div title="Dark Blue"  style="background-color: rgb(35, 111, 161);"></div></ng-option>
+
+        <ng-option [value]="'#ECF0F1'"><div title="Light Gray"  style="background-color: rgb(236, 240, 241);"></div></ng-option>
+        <ng-option [value]="'#CED4D9'"><div title="Medium Gray"  style="background-color: rgb(206, 212, 217);"></div></ng-option>
+        <ng-option [value]="'#95A5A6'"><div title="Gray"  style="background-color: rgb(149, 165, 166);"></div></ng-option>
+        <ng-option [value]="'#7E8C8D'"><div title="Dark Gray"  style="background-color: rgb(126, 140, 141);"></div></ng-option>
+        <ng-option [value]="'#34495E'"><div title="Navy Blue"  style="background-color: rgb(52, 73, 94);"></div></ng-option>
+
+        <ng-option [value]="'#000000'"><div title="Black"  style="background-color: rgb(0, 0, 0);"></div></ng-option>
+        <ng-option [value]="'#ffffff'"><div title="White"  style="border:1px solid lightgray; background-color: rgb(255, 255, 255);"></div></ng-option>
+
+    </ng-select>

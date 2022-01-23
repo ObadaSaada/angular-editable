@@ -1,0 +1,21 @@
+
+    <ng-select
+    class="custom-editable"
+    [searchable] = "false"
+    [clearable] = "false"
+    [(ngModel)]="selectedItem"
+    [placeholder]="title"
+    (change)="changeEventEmitter()"
+    (click)="reset()"
+    >
+      <ng-option *ngFor="let item of items" [value]="item.tag">
+        <pre *ngIf="item.tag === 'pre'" style="margin:auto">{{item.name}}</pre>
+        <p *ngIf="item.tag === 'p'" style="margin:auto">{{item.name}}</p>
+        <h1 *ngIf="item.tag === 'h1'" style="margin:auto">{{item.name}}</h1>
+        <h2 *ngIf="item.tag === 'h2'" style="margin:auto">{{item.name}}</h2>
+        <h3 *ngIf="item.tag === 'h3'" style="margin:auto">{{item.name}}</h3>
+        <h4 *ngIf="item.tag === 'h4'" style="margin:auto">{{item.name}}</h4>
+        <h5 *ngIf="item.tag === 'h5'" style="margin:auto">{{item.name}}</h5>
+        <h6 *ngIf="item.tag === 'h6'" style="margin:auto">{{item.name}}</h6>
+      </ng-option>
+    </ng-select>
