@@ -4,7 +4,7 @@ import { NgSelectConfig } from '@ng-select/ng-select';
 @Component({
   selector: 'colors-editable-select',
   templateUrl: './colors-editable-select.component.html',
-  styleUrls: ['../scss/color-editable-select.component.scss'],
+  styleUrls: ['../../../scss/color-editable-select.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class ColorsEditableSelectComponent implements OnInit {

@@ -4,7 +4,7 @@ import { NgSelectConfig } from '@ng-select/ng-select';
 @Component({
   selector: 'headings-editable-select',
   templateUrl: './headings-editable-select.component.html',
-  styleUrls: ['../scss/editable-select.component.scss'],
+  styleUrls: ['../../../scss/editable-select.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class HeadingsEditableSelectComponent implements OnInit {

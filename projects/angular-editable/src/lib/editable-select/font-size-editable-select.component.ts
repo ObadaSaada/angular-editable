@@ -4,7 +4,7 @@ import { NgSelectConfig } from '@ng-select/ng-select';
 @Component({
   selector: 'font-size-editable-select',
   templateUrl: './font-size-editable-select.component.html',
-  styleUrls: ['../scss/editable-select.component.scss'],
+  styleUrls: ['../../../scss/editable-select.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class FontSizeEditableSelectComponent implements OnInit {

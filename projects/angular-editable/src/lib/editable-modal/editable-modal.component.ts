@@ -4,7 +4,7 @@ import { EditableModalService } from './editable-modal.service';
 @Component({
   selector: 'editable-modal',
   templateUrl: './editable-modal.component.html',
-  styleUrls: ['../scss/editable-modal.component.scss'],
+  styleUrls: ['../../../scss/editable-modal.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class EditableModalComponent implements OnInit, OnDestroy {

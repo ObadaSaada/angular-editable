@@ -1,24 +1,40 @@
-# AngularEditable
+# Angular Editable
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.0.
+Angular wyiswyg Rich Text Editor
 
-## Code scaffolding
+## Supported Versions
 
-Run `ng generate component component-name --project angular-editable` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project angular-editable`.
-> Note: Don't forget to add `--project angular-editable` or else it will be added to the default project in your `angular.json` file. 
+Angular 13.*
 
-## Build
+## Installation
 
-Run `ng build angular-editable` to build the project. The build artifacts will be stored in the `dist/` directory.
+`npm i angular-editable`
 
-## Publishing
+## Usage
 
-After building your library with `ng build angular-editable`, go to the dist folder `cd dist/angular-editable` and run `npm publish`.
+* Import AngularEditableModule into your app module
 
-## Running unit tests
+* Add AngularEditableModule to declarations
 
-Run `ng test angular-editable` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`import { AngularEditableModule } from 'angular-editable'
 
-## Further help
+@NgModule({
+  declarations: [
+    AppComponent,
+    AngularEditableModule
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* add `<lib-angular-editable></lib-angular-editable>` to your html component
+
+## Style
+
+* style files included to the project root inside scss folder

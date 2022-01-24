@@ -3,7 +3,13 @@
   "description": "Angular wysiwyg editor",
   "author": "Obada Saada",
   "license": "MIT",
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ObadaSaada/angular-editable"
+  },
+  "bugs": "https://github.com/ObadaSaada/angular-editable/issues",
+  "keywords": ["angular-editable","rich text", "wysiwyg","editor"],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,9 +17,9 @@
     "prod": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "watch:lib":"ng build angular-editable --watch",
-    "build:lib":"ng build angular-editable",
-    "prod:lib":"ng build angular-editable --prod"
+    "watch:lib": "ng build angular-editable --watch",
+    "build:lib": "ng build angular-editable",
+    "prod:lib": "ng build angular-editable --prod run "
   },
   "private": false,
   "dependencies": {

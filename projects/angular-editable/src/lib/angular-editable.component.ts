@@ -13,7 +13,7 @@ import { HeadingsEditableSelectComponent } from './editable-select/headings-edit
 @Component({
   selector: 'lib-angular-editable',
   templateUrl: './angular-editable.component.html',
-  styleUrls: ['./scss/angular-editable.component.scss']
+  styleUrls: ['../../scss/angular-editable.component.scss']
   , providers: [
     {
       provide: NG_VALUE_ACCESSOR,
