@@ -16,7 +16,8 @@ Angular 13.*
 
 * Add AngularEditableModule to declarations
 
-`import { AngularEditableModule } from 'angular-editable'
+```
+import { AngularEditableModule } from 'angular-editable'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ Angular 13.*
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-`
+```
 
 * add `<lib-angular-editable></lib-angular-editable>` to your html component
 

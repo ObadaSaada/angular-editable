@@ -1,27 +1,41 @@
-# AngularEditable
+# Angular Editable
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+Angular wyiswyg Rich Text Editor
 
-## Development server
+## Supported Versions
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Angular 13.*
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`npm i angular-editable`
 
-## Build
+## Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* Import AngularEditableModule into your app module
 
-## Running unit tests
+* Add AngularEditableModule to declarations
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+import { AngularEditableModule } from 'angular-editable'
 
-## Running end-to-end tests
+@NgModule({
+  declarations: [
+    AppComponent,
+    AngularEditableModule
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+* add `<lib-angular-editable></lib-angular-editable>` to your html component
 
-## Further help
+## Style
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* style files included to the project root inside scss folder
