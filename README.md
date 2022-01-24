@@ -1,6 +1,6 @@
 # Angular Editable
 
-Angular wyiswyg Rich Text Editor
+Angular wysiwyg Rich Text Editor
 
 ## Demo 
 
