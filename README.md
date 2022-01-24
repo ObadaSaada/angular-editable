@@ -14,19 +14,19 @@ Angular 13.*
 
 * Import AngularEditableModule into your app module
 
-* Add AngularEditableModule to declarations
+* Add AngularEditableModule to imports
 
 ```
 import { AngularEditableModule } from 'angular-editable'
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AngularEditableModule
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularEditableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
