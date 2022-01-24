@@ -3,10 +3,11 @@
   "description": "Angular wysiwyg editor",
   "author": "Obada Saada",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "https://github.com/ObadaSaada/angular-editable",
   "bugs": "https://github.com/ObadaSaada/angular-editable/issues",
   "keywords": ["angular-editable","rich text", "wysiwyg","editor"],
+  "private": false,
   "peerDependencies": {
     "@angular/common": "^13.1.0",
     "@angular/core": "^13.1.0",

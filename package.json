@@ -3,7 +3,7 @@
   "description": "Angular wysiwyg editor",
   "author": "Obada Saada",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
