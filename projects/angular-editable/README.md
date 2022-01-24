@@ -2,6 +2,11 @@
 
 Angular wyiswyg Rich Text Editor
 
+## Demo 
+
+[click here](https://obadasaada.github.io/angular-editable/) to go to demo page
+
+
 ## Supported Versions
 
 Angular 13.*
@@ -16,7 +21,7 @@ Angular 13.*
 
 * Add AngularEditableModule to imports
 
-```
+``` ts
 import { AngularEditableModule } from 'angular-editable'
 
 @NgModule({
