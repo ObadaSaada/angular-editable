@@ -2,28 +2,30 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "paths": {
-      "angular-editable": [
-        "dist/angular-editable/angular-editable",
-        "dist/angular-editable"
-      ]
-    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
+    "module": "es2020",
     "moduleResolution": "node",
+    "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2017",
-    "module": "es2020",
+    "strict": true,
+    "noImplicitOverride": true,
+    "downlevelIteration": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "angular-editable": [
+        "dist/angular-editable"
+      ],
+      "angular-editable/*": [
+        "dist/angular-editable/*"
+      ]
+    },
     "lib": [
       "es2020",
       "dom"

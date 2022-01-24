@@ -8,8 +8,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "prod": "ng build --prod",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "watch:lib":"ng build angular-editable --watch",
+    "build:lib":"ng build angular-editable",
+    "prod:lib":"ng build angular-editable --prod"
   },
   "private": false,
   "dependencies": {
