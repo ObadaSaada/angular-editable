@@ -2,95 +2,101 @@
   <div class="editor-toolbar">
     <nav>
       <div class="item">
-        <button (click)="execute('textFormat','undo')">
+        <button (click)="execute('textFormat','undo')" title="{{config.translate.undo}}">
           <fa-icon icon="reply"></fa-icon>
         </button>
       </div>
       <div class="item">
-        <button (click)="execute('textFormat','redo')">
+        <button (click)="execute('textFormat','redo')" title="{{config.translate.redo}}">
           <fa-icon icon="reply" flip="horizontal"></fa-icon>
         </button>
       </div>
     <div class="item">|</div>
       <div class="item">
-        <button (click)="execute('textFormat','bold')">
+        <button (click)="execute('textFormat','bold')" title="{{config.translate.bold}}">
           <fa-icon icon="bold"></fa-icon>
         </button>
       </div>
       <div class="item">
-        <button (click)="execute('textFormat','underline')">
+        <button (click)="execute('textFormat','underline')" title="{{config.translate.underline}}">
           <fa-icon icon="underline"></fa-icon>
         </button>
       </div>
       <div class="item">
-        <button (click)="execute('textFormat','italic')">
+        <button (click)="execute('textFormat','italic')" title="{{config.translate.italic}}">
           <fa-icon icon="italic"></fa-icon>
         </button>
       </div>
       <div class="item">
-        <button (click)="execute('textFormat','strikethrough')">
+        <button (click)="execute('textFormat','strikethrough')" title="{{config.translate.strikethrough}}">
           <fa-icon icon="strikethrough"></fa-icon>
         </button>
       </div>
       <div class="item">|</div>
       <div class="item">
-        <button (click)="execute('justifyLeft','justifyLeft')">
+        <button (click)="execute('justifyLeft','justifyLeft')" title="{{config.translate.textleft}}">
           <fa-icon icon="align-left"></fa-icon>
         </button>
       </div>
       <div class="item">
-        <button (click)="execute('justifyCenter','justifyCenter')">
+        <button (click)="execute('justifyCenter','justifyCenter')" title="{{config.translate.textcenter}}">
           <fa-icon icon="align-center"></fa-icon>
         </button>
       </div>
       <div class="item">
-        <button (click)="execute('justifyRight','justifyRight')">
+        <button (click)="execute('justifyRight','justifyRight')" title="{{config.translate.textright}}">
           <fa-icon icon="align-right"></fa-icon>
         </button>
       </div>
      <div class="item">|</div>
      <div class="item">
-      <button (click)="execute('insertorderedlist','insertorderedlist')">
+      <button (click)="execute('insertorderedlist','insertorderedlist')" title="{{config.translate.orderedlist}}">
         <fa-icon icon="list-ol"></fa-icon>
       </button>
     </div>
     <div class="item">
-      <button (click)="execute('insertunorderedlist','insertunorderedlist')">
+      <button (click)="execute('insertunorderedlist','insertunorderedlist')" title="{{config.translate.unorderedlist}}">
         <fa-icon icon="list-ul"></fa-icon>
       </button>
     </div>
     <div class="item">|</div>
     <div class="item">
-      <button (click)="execute('insertHorizontalRule','insertHorizontalRule')">
+      <button (click)="execute('insertHorizontalRule','insertHorizontalRule')" title="{{config.translate.horizontalrule}}">
         <fa-icon icon="minus"></fa-icon>
       </button>
     </div>
     <div class="item">
-      <button (click)="execute('direction','ltr')">
+      <button (click)="execute('direction','ltr')" title="{{config.translate.lefttorightdirection}}">
         <fa-icon icon="paragraph" flip="horizontal"></fa-icon>
       </button>
     </div>
     <div class="item">
-      <button (click)="execute('direction','rtl')">
+      <button (click)="execute('direction','rtl')" title="{{config.translate.righttoleftdirection}}">
         <fa-icon icon="paragraph"></fa-icon>
       </button>
     </div>
     <div class="item">|</div>
     <div class="item">
-      <button (click)="openURLModal('createLinkModal')">
+      <button (click)="openModal('createLinkModal')" title="{{config.translate.link}}">
         <fa-icon icon="link"></fa-icon>
       </button>
     </div>
     <div class="item">
-      <button (click)="execute('unlink','unlink')">
+      <button (click)="execute('unlink','unlink')" title="{{config.translate.unlink}}">
         <fa-icon icon="unlink"></fa-icon>
       </button>
     </div>
     <div class="item">|</div>
     <div class="item">
-      <button (click)="openFileDialog()">
+      <button (click)="openFileDialog()" title="{{config.translate.insertimage}}">
       <input style="display: none;" type="file" #SelectedImage (change)="handleFileDialogChange($event)"  accept="image/*">
         <fa-icon icon="image"></fa-icon>
+      </button>
+    </div>
+    <div class="item">
+      <button (click)="openTableDialog('createTableModal')" title="{{config.translate.createtable}}">
+      <input style="display: none;" type="file" #SelectedImage (change)="handleFileDialogChange($event)"  accept="image/*">
+        <fa-icon icon="table"></fa-icon>
       </button>
     </div>
     </nav>
@@ -100,37 +106,46 @@
       <div class="item">
         <headings-editable-select #headings
         [items]="config.headings"
-        [title]="'Headings'"
+        [title]="config.translate.headings"
         (changeHeadings)="execute('headings',headingsComp.selectedItem)">
         </headings-editable-select>
       </div>
       <div class="item">
         <font-size-editable-select #fontSize
         [items]="config.fontSizes"
-        [title]="'Font Size'"
+        [title]="config.translate.fontsize"
         (changefontSize)="execute('fontSize',fontSizesComp.selectedItem)">
         </font-size-editable-select>
       </div>
       <div class="item">
         <font-family-editable-select style="width: 200px;" #fontFamily
         [items]="config.fontFamilies"
-        [title]="'Font Family'"
+        [title]="config.translate.fontfamily"
         (changeFontFamily)="execute('fontFamily',fontFamiliesComp.selectedItem)">
         </font-family-editable-select>
       </div>
       <div class="item">
         <colors-editable-select #foreColor
         [items]="config.headings"
-        [title]="'Font Color'"
+        [title]="config.translate.fontcolor"
         (changeColors)="execute('foreColor',foreColorComp.selectedItem)">
         </colors-editable-select>
       </div>
       <div class="item">
         <colors-editable-select #backColor
         [items]="config.headings"
-        [title]="'Background Color'"
+        [title]="config.translate.backgroundcolor"
         (changeColors)="execute('hiliteColor',backColorComp.selectedItem)">
         </colors-editable-select>
+      </div>
+    </nav>
+  </div>
+  <div *ngIf="customButtons.length > 0" class="editor-toolbar">
+    <nav>
+      <div *ngFor="let button of customButtons" class="item">
+        <button #{{button.id}} (click)="customButtonClick(button)">
+          <fa-icon icon="book"></fa-icon> {{button.text}}
+        </button>
       </div>
     </nav>
   </div>
@@ -147,17 +162,9 @@
     (keyup)="editorKeyUp()"
     (click)="clickEvent()"
     (paste)="onPaste($event)"
+    (change)="editorChanged($event.target)"
     >
-      <div>
-          <p>This is some regular content.</p>
-          <p>This text is fully editable.</p>
-          <div class="quote" style="background-color: #EFFEFE;">
-              <p>This is some quoted content.</p>
-              <p>You can only change the format of this text.</p>
-          </div>
-          <p>This is some more regular content.</p>
-          <p>This text is also fully editable.</p>
-      </div>
+    <br/>
     </div>
   </div>
 </div>
@@ -165,24 +172,41 @@
 
   <fieldset>
   <div class="invalid-input" *ngIf="!validURL">
-    Invalid URL
+    {{config.translate.invalidurl}}
   </div>
-  <legend>URL</legend>
+  <legend>{{config.translate.url}}</legend>
     <input #UrlInput type="url" name="url" (input)="inputChange(UrlInput)" />
-    <button (click)="submitURLModal('createLinkModal', UrlInput);">Save</button>
-    <button (click)="closeModel('createLinkModal', [UrlInput])">Close</button>
+    <button (click)="submitURLModal('createLinkModal', UrlInput);">{{config.translate.save}}</button>
+    <button (click)="closeModel('createLinkModal', [UrlInput])">{{config.translate.close}}</button>
   </fieldset>
 </editable-modal>
 <editable-modal #changeImageSize id="changeImageSize">
   <fieldset>
-  <legend>Width</legend>
-    <input #ImageWidth type="number" name="w" /><span>px</span>
+  <legend>{{config.translate.width}}</legend>
+    <input #ImageWidth type="number" name="w" />
   </fieldset>
   <fieldset>
-  <legend>Height</legend>
-    <input #Imageheight type="number" name="h" /><span>px</span>
+  <legend>{{config.translate.height}}</legend>
+    <input #Imageheight type="number" name="h" />
   </fieldset>
-    <button (click)="submitSizeModal('changeImageSize', ImageWidth, Imageheight);">Save</button>
-    <button (click)="resetSizeModal('changeImageSize');">Reset</button>
-    <button (click)="closeModel('changeImageSize', [ImageWidth,Imageheight])">Close</button>
+    <button (click)="submitSizeModal('changeImageSize', ImageWidth, Imageheight);">{{config.translate.save}}</button>
+    <button (click)="closeModel('changeImageSize', [ImageWidth,Imageheight])">{{config.translate.close}}</button> |
+    <button (click)="resetSizeModal('changeImageSize');">{{config.translate.restoredefault}}</button>
+</editable-modal>
+
+<editable-modal #createTableModal id="createTableModal">
+  <fieldset>
+  <legend>{{config.translate.columns}}</legend>
+    <input #TableCols type="number" name="col" />
+  </fieldset>
+  <fieldset>
+  <legend>{{config.translate.rows}}</legend>
+    <input #TableRows type="number" name="row" />
+  </fieldset>
+  <fieldset>
+  <legend>{{config.translate.width}}</legend>
+    <input #TableWidth type="number" name="wid" />
+  </fieldset>
+    <button (click)="submitTableModal('createTableModal', TableCols, TableRows,TableWidth);">{{config.translate.create}}</button>
+    <button (click)="closeModel('createTableModal', [TableCols,TableRows,TableWidth])">{{config.translate.close}}</button>
 </editable-modal>

@@ -3,7 +3,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularEditableConfig, IAngularEditableConfig } from './angular-editable.config';
 import { AngularEditableService } from './angular-editable.service';
-import { EditableModalComponent } from './editable-modal/editable-modal.component';
 import { EditableModalService } from './editable-modal/editable-modal.service';
 import { ColorsEditableSelectComponent } from './editable-select/colors-editable-select.component';
 import { FontFamilyEditableSelectComponent } from './editable-select/font-family-editable-select.component';
@@ -11,7 +10,7 @@ import { FontSizeEditableSelectComponent } from './editable-select/font-size-edi
 import { HeadingsEditableSelectComponent } from './editable-select/headings-editable-select.component';
 
 @Component({
-  selector: 'lib-angular-editable',
+  selector: 'angular-editable',
   templateUrl: './angular-editable.component.html',
   styleUrls: ['../../scss/angular-editable.component.scss']
   , providers: [
@@ -32,9 +31,11 @@ export class AngularEditableComponent implements ControlValueAccessor {
   @ViewChild('SelectedImage') selectImage!: ElementRef;
 
   @Input() config: IAngularEditableConfig = AngularEditableConfig;
-
+  @Input() customButtons: { id:string, text:string, value:string }[] = [];
   @Output('blur') blurEvent: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
   @Output('focus') focusEvent: EventEmitter<FocusEvent> = new EventEmitter<FocusEvent>();
+  @Output('change') changeEvent: EventEmitter<InputEvent> = new EventEmitter<InputEvent>();
+
   @HostBinding('attr.tabindex') tabindex = -1;
 
   validURL: boolean = true;
@@ -45,20 +46,34 @@ export class AngularEditableComponent implements ControlValueAccessor {
   private renderer: Renderer2,
   private sanitizer: DomSanitizer,
   private service: AngularEditableService,
-  private editableModalService: EditableModalService
-  ) { }
+  private editableModalService: EditableModalService,
+  ) {
+    this.service.changeTheme(
+      this.config.style.primary!,
+      this.config.style.secondary!,
+      this.config.style.toolbarColor!,
+      this.config.style.light!,
+      this.config.style.dark1!,
+      this.config.style.dark2!,
+      this.config.style.dark3!)
+  }
 
   private onTouched = () => {};
   registerOnTouched(onTouched: () => void) { this.onTouched = onTouched; }
 
-  private onChange: (value: string) => void = () => {};
+  private onChange: (value: string) => void = (v:any) => { this.changeEvent.emit(v) };
   registerOnChange(onChange: (value: string) => void) { (e: string) => (e === '<br>' ? onChange('') : onChange(e)); }
 
   @HostListener('focus')
   onFocus() {
     this.focus
   }
-
+  customButtonClick(button: any) {
+    let data = button!.value
+    let regex = /<(?!(\/\s*)?(a|b|i|em|s|q|blockquote|strong|small|mark|u|table|tr|th|td|thead|tbody|ul|ol|li|img|h1|h2|h3|h4|h5|h6|p|hr|br|pre|sub|sup)[>,\s])([^>])*>/g;
+    data = data.replace(regex, '');
+    this.service.exec('insertHTML', data)
+  }
   focus() {
     this.elementRef.nativeElement.focus();
   }
@@ -70,11 +85,14 @@ export class AngularEditableComponent implements ControlValueAccessor {
     if (typeof this.onChange === 'function') {
       this.onChange(this.sanitizer.sanitize(SecurityContext.HTML, html)!);
     }
+
   }
   onPaste(event: ClipboardEvent){
+      let data = event!.clipboardData!.getData('text/html') || event!.clipboardData!.getData('text/plain');
+      let regex = /<(?!(\/\s*)?(a|b|i|em|s|q|blockquote|strong|small|mark|u|table|tr|th|td|thead|tbody|ul|ol|li|img|h1|h2|h3|h4|h5|h6|p|hr|br|pre|sub|sup)[>,\s])([^>])*>/g;
+      data = data.replace(regex, '');
       event.preventDefault();
-      const text = event!.clipboardData!.getData('text/plain');
-      this.service.exec('insertHTML', text)
+      this.service.exec('insertHTML', data)
   }
   editorFocused(event: FocusEvent) {
     this.focusEvent.emit(event);
@@ -84,7 +102,6 @@ export class AngularEditableComponent implements ControlValueAccessor {
      if (typeof this.onTouched === 'function') {
        this.onTouched();
      }
-
   }
   editorMouseOut(){ this.service.saveSelection();}
   editorMouseUp() {this.service.saveSelection()}
@@ -115,12 +132,12 @@ export class AngularEditableComponent implements ControlValueAccessor {
     const processed = value || '';
     return processed.trim() === '<br>' ? '' : processed;
   }
-  openURLModal(id: string) {
+  openModal(id: string) {
     this.service.restoreSelection()
     this.editableModalService.open(id);
   }
   submitURLModal(id: string, url: any) {
-    if(!this.isValidURL(url.value))
+    if(!this.service.isValidURL(url.value))
     {
       this.validURL = false;
       return;
@@ -140,8 +157,8 @@ export class AngularEditableComponent implements ControlValueAccessor {
       this.closeModel(id,[url]);
       }
   }
-  openSizeModel(id:string, image:any){
-    this.openURLModal(id)
+  openSizeModal(id:string, image:any){
+    this.openModal(id)
     this.selectedImage = image;
   }
   submitSizeModal(id: string, width: any, height: any) {
@@ -165,7 +182,7 @@ export class AngularEditableComponent implements ControlValueAccessor {
     }
   }
   inputChange(url: any) {
-    if(this.isValidURL(url.value))
+    if(this.service.isValidURL(url.value))
     {
       this.validURL = true;
       return;
@@ -178,14 +195,7 @@ export class AngularEditableComponent implements ControlValueAccessor {
   handleFileDialogChange(event: any) {
     if(document.getSelection.length <= 0)
     {
-
       this.editorElement.nativeElement.focus();
-        // var range = document.createRange();
-        // //this.elementRef.nativeElement.focus();
-        // range.setStart(this.editorElement.nativeElement,0);
-        // range.setEnd(this.editorElement.nativeElement, 0)
-
-
     }
     var file = event.target.files[0];
     var reader  = new FileReader();
@@ -201,27 +211,22 @@ export class AngularEditableComponent implements ControlValueAccessor {
       let recentImage: any
       let selectedImages: any= this.editorElement.nativeElement.querySelectorAll('img')
       selectedImages.forEach((image:any) => {
-        if(image.parentElement.nodeName.toLowerCase() === 'p'){
           recentImage = image;
-          //recentImage.style.width="100%"
-          //recentImage.style.height="100%"
           recentImage.addEventListener('click', (e:any) => {
-            this.openSizeModel('changeImageSize', e.srcElement)
-
+            this.openSizeModal('changeImageSize', e.srcElement)
           })
-        }
       });
-
+      this.selectImage.nativeElement.value='';
     }
   }
-  private isValidURL(str: string) {
-    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-      '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-    return !!pattern.test(str);
+  openTableDialog(id: string) {
+    this.openModal(id)
+  }
+  submitTableModal(id: string, cols: any, rows: any, width: any)
+  {
+    this.service.insertTable(cols.value, rows.value, width.value.toString())
+    this.closeModel(id,[cols,rows,width])
+    this.editorChanged(this.editorElement.nativeElement)
   }
 }
 

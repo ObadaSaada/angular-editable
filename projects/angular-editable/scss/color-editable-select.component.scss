@@ -5,17 +5,17 @@
 .ng-select.color-editable {
   &.ng-select-opened {
       > .ng-select-container {
-          background: $light-color;
-          border-color: $dark-color2;
+          background: var(--light-color);
+          border-color: var(--dark-color2);
           &:hover {
               box-shadow: none;
           }
           .ng-arrow {
               top: -2px;
-              border-color: transparent transparent $dark-color2;
+              border-color: transparent transparent var(--dark-color2);
               border-width: 0 5px 5px;
               &:hover {
-                  border-color: transparent transparent $dark-color2;
+                  border-color: transparent transparent var(--dark-color2);
               }
           }
       }
@@ -46,13 +46,13 @@
   }
   &.ng-select-focused {
       &:not(.ng-select-opened) > .ng-select-container {
-          border-color: $secondary-color;
-          box-shadow: $dark-color;
+          border-color: var(--secondary-color);
+          box-shadow: var(--dark-color);
       }
   }
   &.ng-select-disabled {
       > .ng-select-container {
-          background-color: $dark-color;
+          background-color: var(--dark-color);
       }
   }
   .ng-has-value .ng-placeholder {
@@ -60,10 +60,10 @@
   }
   .ng-select-container {
       min-width: 140px;
-      color: $dark-color2;
-      background-color: $light-color;
+      color: var(--dark-color2);
+      background-color: var(--primary-color);
       border-radius: 4px;
-      border: 1px solid $dark-color2;
+      border: 1px solid var(--dark-color2);
       min-height: 36px;
       align-items: center;
       &:hover {
@@ -77,7 +77,7 @@
               padding-left: 0;
           }
           .ng-placeholder {
-              color: $dark-color2;
+              color: var(--dark-color2);
           }
       }
   }
@@ -100,7 +100,7 @@
   }
 
   .ng-clear-wrapper {
-      color: $dark-color3;
+      color: var(--dark-color3);
       &:hover .ng-clear {
           color: #D0021B;
       }
@@ -121,19 +121,19 @@
       }
       &:hover {
           .ng-arrow {
-              border-top-color: $dark-color2;
+              border-top-color: var(--dark-color2);
           }
       }
       .ng-arrow {
-          border-color: $dark-color3 transparent transparent;
+          border-color: var(--dark-color3) transparent transparent;
           border-style: solid;
           border-width: 5px 5px 2.5px;
       }
   }
 }
 .ng-dropdown-panel {
-  background-color: $light-color;
-  border: 1px solid $dark-color;
+  background-color: var(--light-color);
+  border: 1px solid var(--dark-color);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
   left: 0;
   //height: 140px;
@@ -141,7 +141,7 @@
       bottom: 100%;
       border-top-right-radius: 4px;
       border-top-left-radius: 4px;
-      border-bottom-color: $dark-color;
+      border-bottom-color: var(--dark-color);
       margin-bottom: -1px;
       .ng-dropdown-panel-items {
           .ng-option {
@@ -158,7 +158,7 @@
       border-top-right-radius: 4px;
       border-bottom-right-radius: 4px;
       border-bottom-left-radius: 4px;
-      border-bottom-color: $dark-color;
+      border-bottom-color: var(--dark-color);
       margin-bottom: -1px;
       .ng-dropdown-panel-items {
           .ng-option {
@@ -172,7 +172,7 @@
       top: 100%;
       border-bottom-right-radius: 0px;
       border-bottom-left-radius: 0px;
-      border-top-color: $dark-color;
+      border-top-color: var(--dark-color);
       margin-top: -1px;
       .ng-dropdown-panel-items {
           .ng-option {
@@ -189,7 +189,7 @@
       border-top-left-radius: 4px;
       border-bottom-right-radius: 4px;
       border-bottom-left-radius: 4px;
-      border-bottom-color: $dark-color;
+      border-bottom-color: var(--dark-color);
       margin-bottom: -1px;
       .ng-dropdown-panel-items {
           .ng-option {
@@ -200,11 +200,11 @@
       }
   }
   .ng-dropdown-header {
-      border-bottom: 1px solid $dark-color2;
+      border-bottom: 1px solid var(--dark-color2);
       padding: 5px 7px;
   }
   .ng-dropdown-footer {
-      border-top: 1px solid $dark-color2;
+      border-top: 1px solid var(--dark-color2);
       padding: 5px 7px;
   }
   .ng-dropdown-panel-items {
@@ -216,23 +216,23 @@
     .ng-optgroup {
           user-select: none;
           padding: 0px;
-          color: $dark-color3;
+          color: var(--dark-color3);
           cursor: pointer;
           &.ng-option-disabled {
               cursor: default;
           }
           &.ng-option-marked {
-              border: 1px solid $secondary-color;
+              border: 1px solid var(--secondary-color);
               background-color: transparent;
           }
           &.ng-option-selected, &.ng-option-selected.ng-option-marked {
-              color: $dark-color3;
-              background-color: $dark-color2;
+              color: var(--dark-color3);
+              background-color: var(--dark-color2);
           }
       }
       .ng-option {
-          background-color: $light-color;
-          color: $dark-color3;
+          background-color: var(--light-color);
+          color: var(--dark-color3);
           padding: 0;
           margin-block-start: -5px;
           padding-block-start: -5px;
@@ -243,19 +243,19 @@
             width: 50%;
           }
           &.ng-option-selected, &.ng-option-selected.ng-option-marked {
-              color: $dark-color3;
-              background-color: $dark-color2;
+              color: var(--dark-color3);
+              background-color: var(--dark-color2);
               .ng-option-label {
                   font-weight: 600;
               }
           }
           &.ng-option-marked {
-              border: 1px solid $secondary-color;
+              border: 1px solid var(--secondary-color);
               background-color: transparent;
-              color: $dark-color3;
+              color: var(--dark-color3);
           }
           &.ng-option-disabled {
-              color: $dark-color2;
+              color: var(--dark-color2);
           }
           &.ng-option-child {
               padding-left: 22px;

@@ -1,10 +1,54 @@
 export interface IAngularEditableConfig {
+  translate: {
+    undo: string, redo: string, bold: string, underline: string, italic: string, strikethrough: string,
+    textleft: string, textcenter: string, textright: string,orderedlist: string, unorderedlist: string,
+    horizontalrule: string, lefttorightdirection: string, righttoleftdirection: string,width: string, height: string,
+    link: string, unlink: string, insertimage: string, createtable: string, rows: string, columns: string,
+    headings: string, fontsize: string, fontfamily: string, fontcolor: string, backgroundcolor: string,
+    url: string, invalidurl:string, save: string, close: string, restoredefault: string, create: string,
+  },
   headings: { name: string, tag: string}[],
   fontSizes: { name: string, tag: string}[],
-  fontFamilies: { name: string, tag: string}[]
+  fontFamilies: { name: string, tag: string}[],
+  style:{primary: string, secondary: string, toolbarColor:string, light: string, dark1: string, dark2: string, dark3: string}
 }
 
 export const AngularEditableConfig : IAngularEditableConfig = {
+  translate: {
+    undo: 'Undo',
+    redo: 'Redo',
+    bold: 'Bold',
+    underline: 'Underline',
+    italic: 'Italic',
+    strikethrough: 'Strikethrough',
+    textleft:'Text Left',
+    textcenter:'Text Center',
+    textright:'Text Right',
+    orderedlist: 'Ordered List',
+    unorderedlist: 'Unordered List',
+    horizontalrule: 'Horizontal Rule',
+    lefttorightdirection: 'Left to Right Direction',
+    righttoleftdirection: 'Right to left Direction',
+    link: 'Link',
+    unlink: 'Unlink',
+    insertimage: 'Insert Image',
+    createtable: 'Create Table',
+    headings: 'Headings',
+    fontsize: 'Font Size',
+    fontfamily: 'Font Family',
+    fontcolor: 'Font Color',
+    backgroundcolor: 'Background Color',
+    url: 'URL',
+    invalidurl: 'Invalid URL',
+    save: 'Save',
+    close: 'Close',
+    restoredefault: 'Restore Default',
+    create: 'Create',
+    width: 'Width',
+    height: 'Height',
+    columns: 'Columns',
+    rows: 'Rows'
+  },
   headings: [
     {'name': 'Heading 1','tag': 'h1'},
     {'name': 'Heading 2','tag': 'h2'},
@@ -33,6 +77,16 @@ export const AngularEditableConfig : IAngularEditableConfig = {
     {'name': 'Tahoma','tag': 'tahoma'},
     {'name': 'Times New Roman','tag': '"times new roman"'},
     {'name': 'Verdana','tag': '"verdana'},
-  ]
+  ],
+  style: {
+    primary: '',
+    secondary : '',
+    toolbarColor: '',
+    light: '',
+    dark1: '',
+    dark2: '',
+    dark3: '',
+  }
+
 }
 

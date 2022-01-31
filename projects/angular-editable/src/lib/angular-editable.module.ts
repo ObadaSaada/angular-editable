@@ -18,14 +18,14 @@ import { EditableModalComponent } from './editable-modal/editable-modal.componen
     FontSizeEditableSelectComponent,
     FontFamilyEditableSelectComponent,
     ColorsEditableSelectComponent,
-    EditableModalComponent
+    EditableModalComponent,
   ],
   imports: [
     NgSelectModule, FontAwesomeModule, FormsModule, BrowserModule
   ],
   exports: [
     AngularEditableComponent
-  ]
+  ],
 })
 export class AngularEditableModule {
 

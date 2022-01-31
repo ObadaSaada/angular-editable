@@ -13,11 +13,11 @@ editable-modal {
       height: fit-content;
       .editable-modal-body {
           padding: 20px;
-          background: $light-color;
+          background: var(--light-color);
           margin: 40px;
           border-radius: 5px;
-          box-shadow: 0px 0px 15px $secondary-color;
-          border: 1px solid $dark-color2;
+          box-shadow: 0px 0px 15px var(--secondary-color);
+          border: 1px solid var(--dark-color2);
       }
   }
   .editable-modal-background {
@@ -29,11 +29,14 @@ editable-modal {
       background-color: transparent;
       z-index: 900;
   }
+  .invalid-input {
+    color: var(--dark-color2);
+  }
   input {
-    color: $dark-color2;
-    background-color: $light-color;
+    color: var(--dark-color2);
+    background-color: var(--light-color);
     border-radius: 4px;
-    border: 1px solid $dark-color2;
+    border: 1px solid var(--dark-color2);
     min-height: 36px;
     min-width: 36px;
     align-items: center;
@@ -41,22 +44,22 @@ editable-modal {
     width: 100%;
   }
   button {
-    color: $dark-color2;
-    background-color: $primary-color;
+    color: var(--dark-color2);
+    background-color: var(--primary-color);
     border-radius: 4px;
-    border: 1px solid $dark-color2;
+    border: 1px solid var(--dark-color2);
     min-height: 36px;
     min-width: 36px;
     align-items: center;
     margin-block-start: 5px;
   }
   fieldset {
-    color: $light-color;
+    color: var(--light-color);
     border: 0;
     legend {
-      background-color: $dark-color2;
+      background-color: var(--dark-color2);
       border-radius: 4px;
-      border: 1px solid $dark-color2;
+      border: 1px solid var(--dark-color2);
     }
   }
 }

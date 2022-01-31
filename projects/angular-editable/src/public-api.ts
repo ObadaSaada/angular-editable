@@ -5,3 +5,4 @@
 export * from './lib/angular-editable.service';
 export * from './lib/angular-editable.component';
 export * from './lib/angular-editable.module';
+export * from './lib/angular-editable.config';
