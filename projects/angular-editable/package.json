@@ -12,17 +12,17 @@
   "keywords": ["angular-editable","rich text", "wysiwyg","editor"],
   "private": false,
   "peerDependencies": {
-    "@angular/common": "^13.1.0",
-    "@angular/core": "^13.1.0",
-    "@ng-select/ng-select": "^8.1.1",
-    "@fortawesome/angular-fontawesome": "^0.10.1",
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4"
+    "@angular/common": "^16.0.4",
+    "@angular/core": "^16.0.4",
+    "@ng-select/ng-select": "^11.0.0",
+    "@fortawesome/angular-fontawesome": "^0.13.0",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0"
  },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.5.3"
   },
   "devDependencies": {
-    "@ng-select/ng-select": "^8.1.1"
+    "@ng-select/ng-select": "^11.0.0"
   }
 }

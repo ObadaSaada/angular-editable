@@ -35,5 +35,8 @@
       }
     }
   },
-  "defaultProject": "angular-editable"
+  "defaultProject": "angular-editable",
+  "cli": {
+    "analytics": false
+  }
 }
